@@ -1,0 +1,13 @@
+
+P
+java:S1141D"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+^
+java:S2095+"HUse try-with-resources or close this "FileReader" in a "finally" clause.(Ë×›Ñ
+o
+java:S3008"TRename this field "DbManager" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸è šıÿÿÿÿ
+m
+java:S3776="RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÿ°ûƒÿÿÿÿÿ
+`
+java:S2147}"ECombine this catch with the one at line 123, which has the same body.(àã¨¨şÿÿÿÿ
+
+java:S1130¸"xRemove the declaration of thrown exception 'manager.ObjectNotFoundException', as it cannot be thrown from method's body.(é¾ÅŒ
