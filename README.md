@@ -1,6 +1,6 @@
 # Description
         
-        -> Streaming application (music podcast audiobook), which includes content recommendation
+        -> Streaming application (music, podcast, audiobook), which includes content recommendation
            algorithms based on existing data about the application's users (listeners) and streamers
            or accumulated over the course of the run the application.
 
