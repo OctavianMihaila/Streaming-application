@@ -1,63 +1,42 @@
-# Description
-        
-        -> Streaming application (music, podcast, audiobook), which includes content recommendation
-           algorithms based on existing data about the application's users (listeners) and streamers
-           or accumulated over the course of the run the application.
+# Streaming Application with Content Recommendation
 
+## Description
 
-# Structure
+This streaming application is designed for music, podcasts, and audiobooks, and it incorporates advanced content recommendation algorithms. These algorithms leverage existing user and streamer data, as well as real-time usage statistics.
 
-        -> Application data (is stored in files whose names are passed as parameters to the main
-           method in the following order: streamers.csv, streams.csv, users.csv, comenzi.txt.
-           
-        -> The streaming application allows the users and streamers to create and manage streams
-           using some commands. The most important of the commands are:   
-            
-            >> Add Stream: Nothing is printed to the console, but the application data is modified.
-            
-            >> List: List streams according to account type (user or streamer).
-            
-            >> Delete stream: Nothing is printed to the console, but the application data is modified.
-            
-            >> Listen to a stream: Nothing is printed to the console, but the application data is modified.
-            
-            >> Preference stream: The recommendation algorithm for streams will be as follows:
-               From the list of streamers listened to by the user, you will choose the top 5 (unlistened)
-               streams with the most listens. The recommendation will be made for the type of stream
-               passed as a parameter (SONG, PODCAST or AUDIOBOOK).
-               
-            >> Surpirse stream: The stream recommendation algorithm will be as follows:
-               From the list of streamers in the application, which have not been listened to by the user,
-               you will choose 3 streams that were added most recently. If they were added on the same day,
-               then you will choose the stream with those more listening. The recommendation will be made
-               for the type of stream passed as a parameter (SONG, PODCAST or AUDIOBOOK).
+## Structure
 
-# Implementation
+### Application Data
 
-        -> Data parsing in the application is done using OpenCsv (com.opencsv:opencsv:5.7.1) and
-           display in the console using data in the form of JSON (com.google.code.gson:gson:2.8.6).
+The application stores its data in files, which should be provided as parameters to the main method in the following order: `streamers.csv`, `streams.csv`, `users.csv`, `comenzi.txt`.
 
-        -> The application is designed using 5 design patterns(Singleton, Factory, Command, Builder, Template):
+### Key Commands
 
-                >> Singleton is used for DatabaseManager and RecommendationSystem classes in order
-                   to restrict the limit of the number of object creation to only one. It brings
-                   efficiency in terms of used memory and allows the code to share a class more easily.
+The streaming application offers users and streamers various commands for creating and managing streams:
 
-                >> Factory design pattern is used for Account instantiation (User or Streamer).
-                   It allows the sub-classes to choose the type of objects to create. It promotes
-                   the loose-coupling by eliminating the need to bind application-specific classes
-                   into the code.
+- **Add Stream:** Modifies the application data without printing anything to the console.
 
+- **List:** Lists streams based on the account type (user or streamer).
 
-                >> Command is used to decouple the classes that invoke the operation from the object
-                   that knows how to execute the operation. All the command in the system are designed
-                   using this pattern, including InitSystem and ClearSystem that manages the database.
+- **Delete Stream:** Modifies the application data without printing anything to the console.
 
-                >> Builder is used for AudioStream class and allows to vary a object's internal
-                   representation. Encapsulates code for construction and representation. I picked
-                   this design because of the large number of parameters the AudioStream class has.
+- **Listen to a Stream:** Modifies the application data without printing anything to the console.
 
-                >> The role of the template is to prevent duplicate code, but it also brings flexibility
-                   by letting subclasses decide how to implement steps in the algorithm. I chose this
-                   design thinking about a possible extension of the application that would allow a
-                   better design for the Account class
+- **Preference Stream:** Recommends streams based on the user's listening history. It selects the top 5 unlistened streams with the most listens for a specific stream type (SONG, PODCAST, or AUDIOBOOK).
+
+- **Surprise Stream:** Recommends streams based on recent additions. It selects 3 streams added most recently among those not listened to by the user, with preference given to streams with more listens. Recommendations are made for a specific stream type (SONG, PODCAST, or AUDIOBOOK).
+
+## Implementation
+
+The application is implemented using the following design patterns:
+
+- **Singleton:** Utilized for the `DatabaseManager` and `RecommendationSystem` classes to ensure that only one instance of each is created. This promotes memory efficiency and facilitates sharing of the class.
+
+- **Factory:** Employed for instantiating accounts (User or Streamer), allowing subclasses to determine the type of objects to create and promoting loose coupling.
+
+- **Command:** Used to decouple classes invoking operations from those that execute them. All commands in the system, including `InitSystem` and `ClearSystem` for database management, are designed using this pattern.
+
+- **Builder:** Applied to the `AudioStream` class, enabling flexibility in varying an object's internal representation. It encapsulates construction and representation code, which is particularly useful due to the large number of parameters in the `AudioStream` class.
+
+- **Template:** Introduced to prevent code duplication and enhance flexibility by allowing subclasses to define the implementation of steps in the algorithm. This design choice anticipates future extensions to the application, providing a better design for the `Account` class.
+
